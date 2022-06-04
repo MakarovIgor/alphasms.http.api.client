@@ -1,0 +1,19 @@
+{
+    "name": "igormakarov/alphasms.php.api",
+    "description": "Client for work with alphasms.ua API",
+    "type": "library",
+    "require-dev": {
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Makarov Igor",
+            "email": "igormakarov1991@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4.3",
+        "guzzlehttp/guzzle": "^7.4@dev"
+    }
+}
