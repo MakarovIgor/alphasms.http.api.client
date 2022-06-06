@@ -1,6 +1,6 @@
 <?php
 
-namespace alphasms\api;
+namespace Alphasms\Api;
 
 class AlphaSmsClient
 {
