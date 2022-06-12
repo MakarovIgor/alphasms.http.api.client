@@ -25,8 +25,7 @@ class AlphaSmsHttpClient
     public function getBalance(): float
     {
         $response = $this->sendRequest($this->routes->balance());
-        $this->validateResponse($response);
-        return (float)$response['balance'];
+        return $response['balance'];
     }
 
     /**
@@ -35,9 +34,7 @@ class AlphaSmsHttpClient
      */
     public function getMessageStatus(int $id)
     {
-        $response = $this->sendRequest($this->routes->messageStatus($id));
-        $this->validateResponse($response);
-        return $response;
+        return $this->sendRequest($this->routes->messageStatus($id));
     }
 
     /**
@@ -49,33 +46,35 @@ class AlphaSmsHttpClient
         if (empty($phone)) {
             throw new Exception("Phone number is empty!");
         }
-        $response = $this->sendRequest($this->routes->smsPriceByNumber($phone));
-        $this->validateResponse($response);
-        return $response;
+        return $this->sendRequest($this->routes->smsPriceByNumber($phone));
     }
 
     /**
      * @throws GuzzleException
      * @throws Exception
      */
-    public function send(IMessage $message): int
+    public function sendMessage(IMessage $message): int
     {
         $response = $this->sendRequest($this->routes->sendMessage($message));
-        $this->validateResponse($response);
         return (int)$response['id'];
     }
 
     /**
      * @throws GuzzleException
+     * @throws Exception
      */
     protected function sendRequest(string $url, array $params = []): array
     {
         $response = $this->httpClient->request("GET", $url, $params);
         $content = $response->getBody()->getContents();
+        $this->validateResponse($content);
         return $this->textResponseToArray($content);
     }
 
-    public function textResponseToArray($responseText): array
+    /**
+     * @throws Exception
+     */
+    protected function textResponseToArray(string $responseText): array
     {
         $clearData = [];
         $explodedArray = explode(",", rtrim(str_replace("\n", ',', $responseText), ','));
@@ -86,13 +85,19 @@ class AlphaSmsHttpClient
         return $clearData;
     }
 
+    protected function prepareErrors(string $responseText): string
+    {
+        $responseText = trim(str_replace("\nerrors:", "\n", $responseText));
+        return str_replace("errors:", "\n", $responseText);
+    }
+
     /**
      * @throws Exception
      */
-    public function validateResponse(array $response): void
+    public function validateResponse(string $responseText): void
     {
-        if (isset($response['errors'])) {
-            throw new Exception($response['errors']);
+        if (strpos($responseText, 'errors') !== false) {
+            throw new Exception($this->prepareErrors($responseText));
         }
     }
 }

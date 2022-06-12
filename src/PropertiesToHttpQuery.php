@@ -2,7 +2,7 @@
 
 namespace igormakarov\AlphaSms;
 
-class ObjectPropertiesToSnakeCase
+class PropertiesToHttpQuery
 {
     public function convert(array $properties): string
     {

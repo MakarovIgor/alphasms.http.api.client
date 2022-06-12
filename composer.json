@@ -2,8 +2,6 @@
     "name": "igormakarov/alphasms.php.api",
     "description": "Client for work with alphasms.ua API",
     "type": "library",
-    "require-dev": {
-    },
     "license": "MIT",
     "authors": [
         {
@@ -12,6 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "9.5.x-dev"
+    },
     "require": {
         "php": ">=7.4.3",
         "guzzlehttp/guzzle": "^7.4@dev"
@@ -20,5 +21,10 @@
         "psr-4": {
             "igormakarov\\AlphaSms\\" : "src"
         }
+    },
+    "scripts": {
+        "unit-tests": [
+            "vendor/bin/phpunit --colors=always --configuration phpunit.xml tests/"
+        ]
     }
 }

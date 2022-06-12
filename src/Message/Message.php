@@ -2,7 +2,7 @@
 
 namespace igormakarov\AlphaSms\Message;
 
-use igormakarov\AlphaSms\ObjectPropertiesToSnakeCase;
+use igormakarov\AlphaSms\PropertiesToHttpQuery;
 
 class Message implements IMessage
 {
@@ -34,7 +34,7 @@ class Message implements IMessage
 
     public function __toString(): string
     {
-        return (new ObjectPropertiesToSnakeCase())->convert(get_object_vars($this));
+        return (new PropertiesToHttpQuery())->convert(get_object_vars($this));
     }
 
 }

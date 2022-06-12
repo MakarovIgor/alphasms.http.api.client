@@ -4,7 +4,7 @@
 namespace igormakarov\AlphaSms\Message;
 
 
-use igormakarov\AlphaSms\ObjectPropertiesToSnakeCase;
+use igormakarov\AlphaSms\PropertiesToHttpQuery;
 
 class Viber implements IMessage
 {
@@ -33,6 +33,6 @@ class Viber implements IMessage
 
     public function __toString(): string
     {
-        return $this->message . '&' . (new ObjectPropertiesToSnakeCase())->convert(get_object_vars($this));
+        return $this->message . '&' . (new PropertiesToHttpQuery())->convert(get_object_vars($this));
     }
 }
