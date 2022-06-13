@@ -10,9 +10,9 @@ https://alphasms.ua/storage/files/alphasms-api-http-1.5.4.pdf
 #### Підключення:
 
 composer require igormakarov/alphasms.php.api - https://packagist.org/packages/igormakarov/alphasms.php.api
-
+```php
 require_once 'vendor/autoload.php';
-
+```
 
  #### Ініціалізація і робота з клієнтом:
 
@@ -35,4 +35,10 @@ $smsId = $client->sendMessage(new Sms("alphaNameOrPhoneNumber", "to phone", "mes
 Отримати статус повідомлення
 ```php
 $smsStatus = $client->getMessageStatus($smsId): \igormakarov\AlphaSms\Message\MessageStatus - має інформацію про статус повідомлення код, та дату
+```
+
+
+#### Запуск тестів
+```cli
+composer unit-tests
 ```
