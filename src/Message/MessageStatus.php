@@ -6,7 +6,7 @@ namespace igormakarov\AlphaSms\Message;
 
 class MessageStatus
 {
-    public string $status, $code, $time;
+    private string $status, $code, $time;
 
     public function __construct(string $status, string $code, string $time)
     {
@@ -15,17 +15,17 @@ class MessageStatus
         $this->time = $time;
     }
 
-    public function getCode(): string
+    public function code(): string
     {
         return $this->code;
     }
 
-    public function getStatus(): string
+    public function status(): string
     {
         return $this->status;
     }
 
-    public function getTime(): string
+    public function time(): string
     {
         return $this->time;
     }
