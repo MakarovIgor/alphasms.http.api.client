@@ -29,4 +29,15 @@ class MessageStatus
     {
         return $this->time;
     }
+
+    public function isError(): bool
+    {
+        return in_array(
+            $this->code,
+            [
+                StatusesCodes::$NETWORK_FAILURE,
+                StatusesCodes::$PHONE_NUMBER_ERROR
+            ]
+        );
+    }
 }
