@@ -1,6 +1,6 @@
 {
     "name": "igormakarov/alphasms.php.api",
-    "description": "Client for work with alphasms.ua API",
+    "description": "Client for work with alphasms.ua - service HTTP API",
     "type": "library",
     "license": "MIT",
     "authors": [

@@ -6,6 +6,7 @@ use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use igormakarov\AlphaSms\Message\IMessage;
+use igormakarov\AlphaSms\Message\MessageStatus;
 
 class AlphaSmsHttpClient
 {
@@ -32,21 +33,24 @@ class AlphaSmsHttpClient
      * @throws GuzzleException
      * @throws Exception
      */
-    public function getMessageStatus(int $id)
+    public function getMessageStatus(int $id): MessageStatus
     {
-        return $this->sendRequest($this->routes->messageStatus($id));
+        $response = $this->sendRequest($this->routes->messageStatus($id));
+        return new MessageStatus($response['status'], $response['code'], $response['status_time']);
     }
 
     /**
      * @throws GuzzleException
      * @throws Exception
      */
-    public function getSmsPriceByNumber(string $phone)
+    public function getSmsPriceByNumber(string $phone): SmsPrice
     {
         if (empty($phone)) {
             throw new Exception("Phone number is empty!");
         }
-        return $this->sendRequest($this->routes->smsPriceByNumber($phone));
+        $response = $this->sendRequest($this->routes->smsPriceByNumber($phone));
+
+        return new SmsPrice((float)$response["price"], $response['currency']);
     }
 
     /**
