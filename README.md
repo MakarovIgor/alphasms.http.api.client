@@ -34,7 +34,7 @@ $smsId = $client->sendMessage(new Sms("alphaNameOrPhoneNumber", "to phone", "mes
 ```
 Отримати статус повідомлення
 ```php
-$smsStatus = $client->getMessageStatus($smsId): \igormakarov\AlphaSms\Message\MessageStatus - має інформацію про статус повідомлення код, та дату
+$client->getMessageStatus($smsId): \igormakarov\AlphaSms\Message\MessageStatus - має інформацію про статус повідомлення код, та дату
 ```
 
 
