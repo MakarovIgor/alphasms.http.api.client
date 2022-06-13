@@ -98,7 +98,7 @@ class AlphaSmsHttpClient
     /**
      * @throws Exception
      */
-    public function validateResponse(string $responseText): void
+    private function validateResponse(string $responseText): void
     {
         if (strpos($responseText, 'errors') !== false) {
             throw new Exception($this->prepareErrors($responseText));
