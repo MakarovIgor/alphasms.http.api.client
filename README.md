@@ -1,3 +1,4 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # alphasms.php.api - клієнт для роботи з HTTP API aplhasms.ua сервісу по відправці смс 
 
 #### Увага:
