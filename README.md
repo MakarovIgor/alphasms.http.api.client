@@ -9,8 +9,9 @@
 https://alphasms.ua/storage/files/alphasms-api-http-1.5.4.pdf
 
 #### Підключення:
-
-composer require igormakarov/alphasms.php.api - https://packagist.org/packages/igormakarov/alphasms.php.api
+```cli
+composer require igormakarov/alphasms.php.api - https://packagist.org/packages/igormakarov/alphasms.http.api.client
+```
 ```php
 require_once 'vendor/autoload.php';
 ```
