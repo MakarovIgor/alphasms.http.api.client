@@ -92,7 +92,7 @@ class AlphaSmsHttpClient
     protected function prepareErrors(string $responseText): string
     {
         $responseText = trim(str_replace("\nerrors:", "\n", $responseText));
-        return str_replace("errors:", "\n", $responseText);
+        return str_replace("errors:", "", $responseText);
     }
 
     /**
